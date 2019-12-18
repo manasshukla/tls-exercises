@@ -1,6 +1,6 @@
 # Disclaimer
 
-This is my attempt at solving the TLS exercises provided by Mike Pound. For the exercised, please refer to 
+This is my attempt at solving the TLS exercises provided by Mike Pound. For the original exercises, please refer to 
 - [Original Exercise](https://github.com/mikepound/tls-exercises)
 # SSL/TLS Exercises
 
