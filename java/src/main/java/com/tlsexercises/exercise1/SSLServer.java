@@ -40,6 +40,7 @@ public class SSLServer {
             // For help check out:
             //      https://github.com/mikepound/tls-exercises/blob/master/java/README.md
 
+            socket.setEnabledProtocols(new String[]{"TLSv1.2"});
             System.out.println(String.format("Listening on port %d...", socket.getLocalPort()));
 
             while (true) {

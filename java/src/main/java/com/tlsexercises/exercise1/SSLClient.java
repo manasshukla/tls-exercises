@@ -1,6 +1,7 @@
 package com.tlsexercises.exercise1;
 
 import java.io.*;
+import java.util.Arrays;
 import javax.net.ssl.*;
 import java.nio.*;
 
@@ -27,14 +28,14 @@ public class SSLClient {
         //      https://github.com/mikepound/tls-exercises/blob/master/java/README.md
 
         // Obtain the default socket factory
-        SSLSocketFactory f = null;
+        SSLSocketFactory factory = (SSLSocketFactory) SSLSocketFactory.getDefault();
 
         try {
             // Create a socket - will not connect yet
-            SSLSocket socket = null;
+            SSLSocket socket = (SSLSocket) factory.createSocket(REMOTE_HOST,REMOTE_PORT);
 
             // Handshake to create a session
-
+            socket.startHandshake();
 
 
             if (socket == null) {

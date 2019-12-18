@@ -16,6 +16,8 @@ public class SSLServer {
     private static final int LOCAL_PORT = 8383;
     private static final String KEYSTORE_LOCATION = SSLServer.class.getResource("/server/ServerKeyStore.jks").getPath();
     private static final String KEYSTORE_PASSWORD = "experttls";
+    private static final String TRUSTSTORE_LOCATION = SSLServer.class.getResource("/server/ServerTrustStore.jks").getPath();
+    private static final String TRUSTSTORE_PASSWORD = "experttls";
 
     // Entry point
     public static void main(String argv[]) throws Exception {
@@ -23,6 +25,8 @@ public class SSLServer {
         //     -Djavax.net.ssl.keyStore="keystore_location"
         System.setProperty("javax.net.ssl.keyStore", KEYSTORE_LOCATION);
         System.setProperty("javax.net.ssl.keyStorePassword", KEYSTORE_PASSWORD);
+        System.setProperty("javax.net.ssl.trustStore", TRUSTSTORE_LOCATION);
+        System.setProperty("javax.net.ssl.trustStorePassword", TRUSTSTORE_PASSWORD);
 
         // Part 1
         // In order to verify the client, this server requires a trust store. Use setProperty commands to
@@ -47,6 +51,7 @@ public class SSLServer {
             //
             // For help check out:
             //      https://github.com/mikepound/tls-exercises/blob/master/java/README.md
+            socket.setNeedClientAuth(true);
 
             System.out.println(String.format("Listening on port %d...", socket.getLocalPort()));
 
@@ -56,6 +61,7 @@ public class SSLServer {
                 handler.start();
             }
         } catch (Exception e) {
+            System.out.println("ERROR:"+ e.getStackTrace());
             System.out.println("Exception:" + e.getMessage());
         }
     }

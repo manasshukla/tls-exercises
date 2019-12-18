@@ -1,3 +1,7 @@
+# Disclaimer
+
+This is my attempt at solving the TLS exercises provided by Mike Pound. For the exercised, please refer to 
+- [Original Exercise](https://github.com/mikepound/tls-exercises)
 # SSL/TLS Exercises
 
 These exercises are associated with my course on Transport Layer Security (TLS). This course is delivered via O'Reilly Live Training. When not teaching online I am a lecturer at the University of Nottingham, and appear on YouTube.

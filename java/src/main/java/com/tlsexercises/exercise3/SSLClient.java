@@ -74,6 +74,26 @@ public class SSLClient {
                 // For help check out:
                 //      https://github.com/mikepound/tls-exercises/blob/master/java/README.md
 
+                X509Certificate leafCert = chain[0];
+                byte [] encodedCert = leafCert.getEncoded();
+
+                try {
+                    MessageDigest md = MessageDigest.getInstance("SHA-256");
+                    byte [] sha = md.digest(encodedCert);
+
+                    StringBuilder sb = new StringBuilder();
+                    for (byte b : sha) {
+                        sb.append(String.format("%02x", b));
+                    }
+
+                    System.out.println("SHA of Encoded cert = "+sb.toString());
+
+                    if(!Arrays.equals(sha,SERVER_PINNED_HASH)){
+                        throw new CertificateException("Hash of the cert is not equal to the pinned hash");
+                    }
+                } catch (NoSuchAlgorithmException e) {
+                    throw new CertificateException("Invalid encoding algo specified");
+                }
             }
 
             @Override

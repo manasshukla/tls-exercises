@@ -6,9 +6,14 @@ java/.idea/
 java/*.iml
 java/*.iws
 
+**/.idea/
+
 # Maven
 java/log/
 java/target/
+
+# Output
+out
 
 ####
 ## PYTHON

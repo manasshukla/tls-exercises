@@ -15,6 +15,8 @@ public class SSLClient {
     private static final int REMOTE_PORT = 8383;
     private static final String TRUSTSTORE_LOCATION = SSLClient.class.getResource("/client/ClientTrustStore.jks").getPath();
     private static final String TRUSTSTORE_PASSWORD = "experttls";
+    private static final String KEYSTORE_LOCATION = SSLClient.class.getResource("/client/ClientKeyStore.jks").getPath();
+    private static final String KEYSTORE_PASSWORD = "experttls";
 
     // Entry point
     public static void main(String[] args) {
@@ -23,6 +25,8 @@ public class SSLClient {
         System.setProperty("javax.net.ssl.trustStore", TRUSTSTORE_LOCATION);
         System.setProperty("javax.net.ssl.trustStorePassword", TRUSTSTORE_PASSWORD);
 
+        System.setProperty("javax.net.ssl.keyStore", KEYSTORE_LOCATION);
+        System.setProperty("javax.net.ssl.keyStorePassword", KEYSTORE_PASSWORD);
         // Part 2
         // The server is now expecting a certificate, add relevant keystore definitions and properties above.
         //
